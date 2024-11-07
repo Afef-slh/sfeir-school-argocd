@@ -9,3 +9,13 @@ patches:
 images:
 - name: public.ecr.aws/nginx/nginx
   newTag: 1.27.2
+template:
+  metadata:
+    annotations:
+      argocd-image-updater.argoproj.io/write-back-method: git
+      argocd-image-updater.argoproj.io/write-back-target: kustomization
+      argocd-image-updater.argoproj.io/git-branch: "main"
+      argocd-image-updater.argoproj.io/image-list: "image=public.ecr.aws/nginx/nginx"
+      argocd-image-updater.argoproj.io/update-strategy: semver
+      #argocd-image-updater.argoproj.io/image.allow-tags: "regexp:*$"
+      argocd-image-updater.argoproj.io/force-update: "true"
